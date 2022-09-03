@@ -2,9 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
-## Development server
+## Get running on your local device:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clone the project
+2. Use the command-line to navigate to the cloned folder
+3. Check if you have NodeJS installed with 'node -v'. If it doesn't print a number, download the LTS version [here](https://nodejs.org/en/download/)
+4. Once node is installed, you will need to install the Angular CLI with 'npm install -g @angular/cli'
+5. Double check you're still in the cloned directory, then run 'npm install' to download all the project dependencies
+6. Run 'ng serve' to launch the development server
+7. Open a browser and navigate to 'localhost:4200' 
 
 ## Code scaffolding
 
