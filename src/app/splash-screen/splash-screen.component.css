@@ -29,13 +29,12 @@
 }
 
 .app-logo {
-  width: 200px;
-  height: 200px;
+  width: 600px;
   background-size: contain;
   max-width: 100%;
   background-position: center;
-  background: url("../../assets/app-logo.svg");
   background-repeat: no-repeat;
+  margin-bottom: 50px;
 }
 
 .app-loader {
