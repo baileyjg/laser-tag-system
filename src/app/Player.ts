@@ -18,6 +18,7 @@ export default class Player {
   public increaseDeathCount(): void {
     this.deathCount += 1;
   }
+
   public increaseKillCount(): void {
     this.killCount += 1;
   }
@@ -26,11 +27,17 @@ export default class Player {
   public getName(): string {
     return this.name;
   }
+
   public getKillCount(): number {
     return this.killCount;
   }
+
   public getDeathCount(): number {
     return this.deathCount;
+  }
+
+  public getProfilePicUrl(): string {
+    return this.profilePicSrc;
   }
 
   // Helpers
