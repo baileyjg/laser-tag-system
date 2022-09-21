@@ -1,5 +1,4 @@
-<splash-screen></splash-screen>
-<div class="container">
-  <h1 class="title">Hello world :)</h1>
-  <h3 class="subheader">Let's have a fun semester!</h3>
-</div>
+<splash-screen *ngIf="devMode === false"></splash-screen>
+<app-dev-mode-toolbar *ngIf="devMode" (changeStageEvent)="changeStage($event)"></app-dev-mode-toolbar>
+<app-player-entry-screen *ngIf="stage === 'player-entry'"></app-player-entry-screen>
+<app-game-action-screen *ngIf="stage === 'game-action'"></app-game-action-screen>
