@@ -14,10 +14,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Useful information for developers
 
-###Dev Mode:
+### Dev Mode:
 
 Enabled by setting the devMode boolean to 'true' in app.component.ts. This mode does the following:
     1. Makes the developer tool bar visible
     2. Disables the splash screen
 
+### Angular CLI Info
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
