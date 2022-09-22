@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameActionService } from 'src/app/services/game-action.service';
 
 @Component({
   selector: 'app-game-action-screen',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameActionScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameActionService: GameActionService) { }
 
   ngOnInit(): void {
   }
