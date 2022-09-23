@@ -1,6 +1,33 @@
 
+
 .col {
- background-color: blanchedalmond;
  border: solid black;
  height: 100vh;
+ text-align: center;
+ overflow: auto;
+ border-radius: 1rem;
+ margin-top: 1rem;
+ font-weight: bolder;
+}
+
+.team1-container{
+    margin-right: 2rem;
+    background-color: lightseagreen;
+}
+
+.team2-container{
+    margin-left: 2rem;
+    background-color: lightcoral;
+}
+
+.team-input{
+    margin-top: 1rem;
+}
+
+.player-header{
+    font-weight: bold;
+}
+
+.player-card{
+    margin-bottom: 0.5rem;
 }

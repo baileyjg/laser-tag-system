@@ -1,12 +1,48 @@
 <div class="container">
   <div class="row">
     <div class="row">
-      <div class="col">
+      <div class="col team1-container">
         Team Column 1
+        <form class="input-group mb-3 team-input" id="team1Form">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="playerEntered"
+            placeholder="Player Name"
+            name="playerName1"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-success"
+              type="button"
+              (click)="enterPlayer(playerEntered)"
+            >
+              Enter Player
+            </button>
+          </div>
+        </form>
+        <div class="card player-card" *ngFor="let player of players">
+          <div class="card-header player-header">
+            {{ player.name }}
+          </div>
+          <div class="card-body">Player ID: {{ player.id }}</div>
+        </div>
       </div>
-      
-      <div class="col">
+
+      <div class="col team2-container">
         Team Column 2
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Player Name"
+            name="playerName2"
+          />
+          <div class="input-group-append">
+            <button class="btn btn-success" type="button">Enter Player</button>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>

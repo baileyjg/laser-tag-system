@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { PlayerEntryScreenComponent } from './screens/player-entry-screen/player-entry-screen.component';
@@ -16,7 +16,8 @@ import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-
     DevModeToolbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
