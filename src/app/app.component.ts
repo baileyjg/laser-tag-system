@@ -11,7 +11,6 @@ export class AppComponent {
   devMode: boolean = true;
 
   changeStage(stage: string) {
-    console.log(stage);
     this.stage = stage;
   }
 }
