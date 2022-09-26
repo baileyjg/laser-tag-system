@@ -40,6 +40,10 @@ export default class Player {
     return this.profilePicSrc;
   }
 
+  public getID() {
+    return this.id;
+  }
+
   // Helpers
   private generateProfilePic(): void {
     const urlName = this.name.replace(/[^a-zA-Z0-9]/g, "");

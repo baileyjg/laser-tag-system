@@ -61,11 +61,42 @@ export class PlayerEntryService {
     }
   }
 
+  removePlayer(id: number) {
+    // If ID exists in either team, remove it.
+    this.team1.players.filter((player, index) => {
+      if (player.getID() === id) {
+        this.team1.players.splice(index, 1);
+      }
+    });
+
+    this.team2.players.filter((player, index) => {
+      if (player.getID() === id) {
+        this.team2.players.splice(index, 1);
+      }
+    });
+  }
+
   fetchPlayerInfo(id: number, teamNum: number): Promise<boolean> {
-    // Query the player ID from DB (using mock data for now)
+    // If player is already on a team -> do nothing -> return true
+    // Else, query the player ID from DB (using mock data for now)
     // If ID exists, return true
     // Else return false
     // Using setTimeout to simulate async data from backend
+
+    this.team1.players.filter((player) => {
+      if (player.getID() === id) {
+        // Player is already on a team, do nothing
+        return true;
+      }
+    });
+
+    this.team1.players.filter((player) => {
+      if (player.getID() === id) {
+        // Player is already on a team, do nothing
+        return true;
+      }
+    });
+
     return new Promise((resolve) => {
       setTimeout(() => {
         if (Object.keys(this.existingPlayers).includes(String(id))) {
