@@ -1,14 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="row">
-      <div class="col">
-        Team Column 1
+      <div class="col team1">
+        <p class="header">Team 1</p>
       </div>
       <div class="col">
-        Game info
+        <p class="header">Game Information</p>
+        <p class="timer">Time Remaining:</p>
+        <p class="timertime">{{minutes}}<span class="timertimecolon">:</span>{{seconds}}</p> <!-- Placeholder -->
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+        <p></p>
+        <p class="score"> <!-- Placeholder -->
+          <span class="t1score">{{t1score}}</span><span class="score"> Score </span><span class="t2score">{{t2score}}</span>
+        </p>
+        <p class="killfeedheader">Killfeed</p> <!-- Placeholder -->
+        <div class="killfeed">
+        </div>
       </div>
-      <div class="col">
-        Team Column 2
+      <div class="col team2">
+        <p class="header">Team 2</p>
       </div>
     </div>
+    Game Start Time: {{today | date:'medium'}}
+  </div>
 </div>
