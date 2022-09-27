@@ -1,5 +1,75 @@
 .col {
-  background-color: blanchedalmond;
-  border: solid black;
-  height: 100vh;
- }
+    border: solid black;
+    border-radius: 20px;
+    height: 100vh;
+    overflow: auto;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    font-weight: bolder;
+    background: antiquewhite;
+}
+.header{
+    text-align: center;
+}
+.timer{
+    text-align: center;
+    font-size: larger;
+}
+.timertime{
+    text-align: center;
+    font-size: x-large;
+}
+
+.timertimecolon{
+    text-align: center;
+    font-size: x-large;
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50%{
+        opacity: 0;
+    }
+}
+
+.team1{
+    background: lightseagreen;
+}
+
+.team2{
+    background: lightcoral;
+}
+
+.t1score{
+    background: lightseagreen;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    margin: auto;
+}
+
+.t2score{
+    background: lightcoral;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    font-size: 50px;
+}
+
+.score{
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.killfeedheader{
+    text-align: center;
+    font-size: larger;
+}
+
+.killfeed{
+    background: whitesmoke;
+    height: 50vh;
+}

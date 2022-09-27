@@ -8,6 +8,12 @@ import { GameActionService } from 'src/app/services/game-action.service';
 })
 export class GameActionScreenComponent implements OnInit {
 
+  today: number = Date.now();
+  minutes: number = 5;
+  seconds: string = "00";
+  t1score: number = 0;
+  t2score: number = 0;
+
   constructor(private gameActionService: GameActionService) { }
 
   ngOnInit(): void {
