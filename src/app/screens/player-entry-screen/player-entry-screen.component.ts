@@ -12,12 +12,14 @@ import { FormGroup, Validators, FormControl } from "@angular/forms";
 })
 export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
   constructor(private playerEntryService: PlayerEntryService) {}
+  players: Player[] = new Array();
+  id: number = 1;
+  playerEntered: string;
 
   private team1Sub: Subscription;
   private team2Sub: Subscription;
   team1: Team;
   team2: Team;
-  players: Player[] = new Array();
   team1Form: FormGroup;
   team1PlayerNameForm: FormGroup;
   playerID: FormControl;
@@ -29,8 +31,8 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
     });
 
     this.team1PlayerNameForm = new FormGroup({
-      toAdd: new FormControl(''),
-    })
+      toAdd: new FormControl(""),
+    });
 
     this.team1 = this.playerEntryService.getTeam1();
     this.team2 = this.playerEntryService.getTeam2();
@@ -47,11 +49,10 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
   async fetch_player(id: number, teamNum: number) {
     this.playerEntryService.fetchPlayerInfo(id, teamNum).then(
       (result) => {
-        if(!result){
-          console.log(result)
+        if (!result) {
+          console.log(result);
           this.playerNoExist = true;
-        }
-        else{
+        } else {
           this.team1Form.reset();
         }
       },
@@ -72,7 +73,10 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
   }
 
   enterPlayer(id: number, teamNumber: number) {
-    let newPlayer = new Player(id, this.team1PlayerNameForm.controls.toAdd.value);
+    let newPlayer = new Player(
+      id,
+      this.team1PlayerNameForm.controls.toAdd.value
+    );
     this.team1.players[id] = newPlayer;
     this.playerNoExist = false;
     this.team1Form.reset();
@@ -82,11 +86,9 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
   removePlayer(id: number, teamNumber: number) {
     console.log(id);
     console.log(this.team1.players);
-    if(teamNumber === 1)
-    {
+    if (teamNumber === 1) {
       this.team1.players[id] = null;
     }
-    
   }
 
   startGame() {

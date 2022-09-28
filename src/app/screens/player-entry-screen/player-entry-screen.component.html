@@ -20,7 +20,11 @@
           </button>
         </div>
       </form>
-      <form *ngIf = "playerNoExist" class="input-group mb-3 team-input" [formGroup]="team1PlayerNameForm">
+      <form
+        *ngIf="playerNoExist"
+        class="input-group mb-3 team-input"
+        [formGroup]="team1PlayerNameForm"
+      >
         <input
           type="text"
           class="form-control"
