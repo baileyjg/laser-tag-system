@@ -74,12 +74,14 @@ export class PlayerEntryService {
     this.team1.players.filter((player, index) => {
       if (player.getID() === id) {
         this.team1.players.splice(index, 1);
+        this.team1$.next(this.team1);
       }
     });
 
     this.team2.players.filter((player, index) => {
       if (player.getID() === id) {
         this.team2.players.splice(index, 1);
+        this.team2$.next(this.team2);
       }
     });
   }
@@ -105,7 +107,7 @@ export class PlayerEntryService {
       }
     });
 
-    const req = this.http.get(`http://localhost:8080/player/`);
+    const req = this.http.get(`http://localhost:8080/player/1`);
     req.subscribe((data) => {
       console.log(data);
     });
