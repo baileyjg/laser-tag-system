@@ -2,18 +2,26 @@ import { Injectable } from "@angular/core";
 import Player from "../Player";
 import Team from "../Team";
 import { Subject } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
 })
 export class PlayerEntryService {
-  
+  constructor(private http: HttpClient) {}
+
   // Mock Data - will be deleted when backend is hooked up
   team1MockData: Team = {
     name: "Cowboys",
     color: "blue",
     score: 0,
-    players: [new Player(1, "Hank"), new Player(2, "Bill"), new Player(3, "Buster"), new Player(4, "Colt")],
+    players: [
+      new Player(1, "Hank"),
+      new Player(2, "Bill"),
+      new Player(3, "Buster"),
+      new Player(4, "Colt"),
+      new Player(9, "Cowboy Man"),
+    ],
   };
 
   team2MockData = {
@@ -97,6 +105,10 @@ export class PlayerEntryService {
       }
     });
 
+    const req = this.http.get(`http://localhost:8080/player/`);
+    req.subscribe((data) => {
+      console.log(data);
+    });
     return new Promise((resolve) => {
       setTimeout(() => {
         if (Object.keys(this.existingPlayers).includes(String(id))) {
