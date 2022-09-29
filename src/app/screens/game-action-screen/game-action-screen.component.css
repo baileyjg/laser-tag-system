@@ -78,6 +78,7 @@
     background: black;
     color: white;
     height: 50vh;
+    border-radius: 20px;
 }
 
 .player-card {
