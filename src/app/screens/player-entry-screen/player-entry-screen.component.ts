@@ -88,10 +88,7 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
       //creates a new player with the value from the input for an ID
       //and the value from the input for a new code name
       this.playerEntryService.addPlayer(
-        new Player(
-          this.team1Form.value.playerID1,
-          this.team1PlayerNameForm.controls.toAdd1.value
-        ),
+        new Player(this.team1Form.value.playerID1, this.team1PlayerNameForm.controls.toAdd1.value),
         teamNumber
       );
       //playerTeam1NoExist is a boolean to make the input box appear
@@ -101,32 +98,19 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
       this.team1PlayerNameForm.reset();
     } else if (teamNumber === 2) {
       this.playerEntryService.addPlayer(
-        new Player(
-          this.team2Form.value.playerID2,
-          this.team2PlayerNameForm.controls.toAdd2.value
-        ),
+        new Player(this.team2Form.value.playerID2, this.team2PlayerNameForm.controls.toAdd2.value),
         teamNumber
       );
       this.playerTeam2NoExist = false;
       this.team2Form.reset();
       this.team2PlayerNameForm.reset();
     } else {
-      reportError(
-        "OOPS! Something went wrong adding this player. Line 110 of player-entry-screen.component.ts"
-      );
+      reportError("OOPS! Something went wrong adding this player. Line 110 of player-entry-screen.component.ts");
     }
   }
 
-  removePlayer(player: Player, teamNumber: number) {
-    if (teamNumber === 1) {
-      this.team1.players[this.team1.players.indexOf(player)] = null;
-    } else if (teamNumber === 2) {
-      this.team2.players[this.team2.players.indexOf(player)] = null;
-    } else {
-      reportError(
-        "OOPS! Something went wrong removing this player. Line 122 in player-entry-screen.component.ts"
-      );
-    }
+  removePlayer(player: Player) {
+    this.playerEntryService.removePlayer(player.getID());
   }
 
   startGame() {

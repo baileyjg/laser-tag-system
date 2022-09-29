@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import Player from "../Player";
 import Team from "../Team";
 import { Subject } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
