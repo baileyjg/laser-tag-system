@@ -2,18 +2,26 @@ import { Injectable } from "@angular/core";
 import Player from "../Player";
 import Team from "../Team";
 import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
 })
 export class PlayerEntryService {
-  
+  constructor(private http: HttpClient) {}
+
   // Mock Data - will be deleted when backend is hooked up
   team1MockData: Team = {
     name: "Cowboys",
     color: "blue",
     score: 0,
-    players: [new Player(1, "Hank"), new Player(2, "Bill"), new Player(3, "Buster"), new Player(4, "Colt")],
+    players: [
+      new Player(1, "Hank"),
+      new Player(2, "Bill"),
+      new Player(3, "Buster"),
+      new Player(4, "Colt"),
+      new Player(9, "Cowboy Man"),
+    ],
   };
 
   team2MockData = {
@@ -61,11 +69,48 @@ export class PlayerEntryService {
     }
   }
 
+  removePlayer(id: number) {
+    // If ID exists in either team, remove it.
+    this.team1.players.filter((player, index) => {
+      if (player.getID() === id) {
+        this.team1.players.splice(index, 1);
+        this.team1$.next(this.team1);
+      }
+    });
+
+    this.team2.players.filter((player, index) => {
+      if (player.getID() === id) {
+        this.team2.players.splice(index, 1);
+        this.team2$.next(this.team2);
+      }
+    });
+  }
+
   fetchPlayerInfo(id: number, teamNum: number): Promise<boolean> {
-    // Query the player ID from DB (using mock data for now)
+    // If player is already on a team -> do nothing -> return true
+    // Else, query the player ID from DB (using mock data for now)
     // If ID exists, return true
     // Else return false
     // Using setTimeout to simulate async data from backend
+
+    this.team1.players.filter((player) => {
+      if (player.getID() === id) {
+        // Player is already on a team, do nothing
+        return true;
+      }
+    });
+
+    this.team1.players.filter((player) => {
+      if (player.getID() === id) {
+        // Player is already on a team, do nothing
+        return true;
+      }
+    });
+
+    const req = this.http.get(`http://localhost:8080/player/1`);
+    req.subscribe((data) => {
+      console.log(data);
+    });
     return new Promise((resolve) => {
       setTimeout(() => {
         if (Object.keys(this.existingPlayers).includes(String(id))) {
