@@ -19,7 +19,7 @@ import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
