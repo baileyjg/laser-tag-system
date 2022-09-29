@@ -1,3 +1,8 @@
+.background{
+    background-color: black;
+    width: 100%;
+}
+
 .col {
     border: solid black;
     border-radius: 20px;
@@ -6,7 +11,7 @@
     margin-right: 2rem;
     margin-top: 1rem;
     font-weight: bolder;
-    background: antiquewhite;
+    background: whitesmoke;
 }
 .header{
     text-align: center;
@@ -70,6 +75,7 @@
 }
 
 .killfeed{
-    background: whitesmoke;
+    background: black;
+    color: white;
     height: 50vh;
 }

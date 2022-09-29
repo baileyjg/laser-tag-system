@@ -13,6 +13,7 @@ export class GameActionScreenComponent implements OnInit {
   seconds: string = "00";
   t1score: number = 0;
   t2score: number = 0;
+  timerprogress: number = 50;
 
   constructor(private gameActionService: GameActionService) { }
 
