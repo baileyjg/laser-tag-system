@@ -10,37 +10,23 @@ import { HttpClient } from "@angular/common/http";
 export class PlayerEntryService {
   constructor(private http: HttpClient) {}
 
+  // Set the backend URL
+  // backendURL = "http://localhost:8080";
+  backendURL = "https://laserbacks-backend.herokuapp.com";
+
   // Mock Data - will be deleted when backend is hooked up
   team1MockData: Team = {
     name: "Cowboys",
     color: "blue",
     score: 0,
-    players: [
-      new Player(1, "Hank"),
-      new Player(2, "Bill"),
-      new Player(3, "Buster"),
-      new Player(4, "Colt"),
-      new Player(9, "Cowboy Man"),
-    ],
+    players: [],
   };
 
   team2MockData = {
     name: "Indians",
     color: "red",
     score: 0,
-    players: [
-      new Player(5, "Crazy Horse"),
-      new Player(6, "White Feather"),
-      new Player(7, "Round Pot"),
-      new Player(8, "Winona"),
-    ],
-  };
-
-  existingPlayers = {
-    10: new Player(10, "Steve"),
-    11: new Player(11, "Tanisha"),
-    27: new Player(27, "Michelle"),
-    54: new Player(54, "Danny"),
+    players: [],
   };
 
   // Variables
@@ -60,6 +46,10 @@ export class PlayerEntryService {
 
   addPlayer(player: Player, teamNum: number) {
     // Called when adding a new player into the DB
+    const pData = { codeName: player.getName() };
+    this.http.post(`${this.backendURL}/player/`, pData).subscribe((x) => {
+      console.log(x);
+    });
     if (teamNum === 1) {
       this.team1.players.push(player);
       this.team1$.next(this.team1);
@@ -93,41 +83,44 @@ export class PlayerEntryService {
     // Else return false
     // Using setTimeout to simulate async data from backend
 
-    this.team1.players.filter((player) => {
-      if (player.getID() === id) {
+    let playerIsAlreadyOnATeam = false;
+    this.team1.players.forEach((player) => {
+      if (player.getID() == id) {
         // Player is already on a team, do nothing
-        return true;
+        playerIsAlreadyOnATeam = true;
       }
     });
 
-    this.team1.players.filter((player) => {
-      if (player.getID() === id) {
+    this.team2.players.forEach((player) => {
+      if (player.getID() == id) {
         // Player is already on a team, do nothing
-        return true;
+        playerIsAlreadyOnATeam = true;
       }
     });
 
-    const req = this.http.get(`http://localhost:8080/player/1`);
-    req.subscribe((data) => {
-      console.log(data);
-    });
     return new Promise((resolve) => {
-      setTimeout(() => {
-        if (Object.keys(this.existingPlayers).includes(String(id))) {
-          if (teamNum === 1) {
-            this.team1.players.push(this.existingPlayers[id]);
-            this.team1$.next(this.team1);
-          } else if (teamNum === 2) {
-            this.team2.players.push(this.existingPlayers[id]);
-            this.team2$.next(this.team2);
+      if (playerIsAlreadyOnATeam) {
+        resolve(true);
+      } else {
+        this.http.get(`${this.backendURL}/player/${id}`).subscribe((data) => {
+          if (data) {
+            const pID = (data as any).id;
+            const pName = (data as any).codename;
+            if (teamNum === 1) {
+              this.team1.players.push(new Player(pID, pName));
+              this.team1$.next(this.team1);
+            } else if (teamNum === 2) {
+              this.team2.players.push(new Player(pID, pName));
+              this.team2$.next(this.team2);
+            } else {
+              resolve(false);
+            }
+            resolve(true);
           } else {
             resolve(false);
           }
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      }, 1000);
+        });
+      }
     });
   }
 }
