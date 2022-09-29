@@ -1,44 +1,55 @@
-.background{
-    background-color: black;
-    width: 100%;
+.background {
+  background-color: black;
+  width: 100%;
 }
 .col-container {
- border: solid black;
- height: 100vh;
- width: 100%;
- text-align: center;
- overflow: auto;
- border-radius: 1rem;
- margin-top: 1rem;
- margin-bottom: 1rem;
- font-weight: bolder;
+  border: solid black;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
 }
 
-.team1-container{
-    margin-right: 2rem;
-    margin-left: 10rem;
-    background-color: lightseagreen;
+.team1-container {
+  margin-right: 2rem;
+  margin-left: 10rem;
+  background-color: lightseagreen;
 }
 
-.team2-container{
-    margin-left: 2rem;
-    margin-right: 10rem;
-    background-color: lightcoral;
+.team2-container {
+  margin-left: 2rem;
+  margin-right: 10rem;
+  background-color: lightcoral;
 }
 
-.team-input{
-    margin-top: 1rem;
-    margin-left: .5rem;
+.team-input {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 }
 
-.button-input{
-    margin-right: 1rem;
+.button-input {
+  margin-right: 1rem;
 }
 
-.player-header{
-    font-weight: bold;
+.player-header {
+  font-weight: bold;
 }
 
-.player-card{
-    margin-bottom: 0.5rem;
+.player-card {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  background-color: black;
+  color: white;
+}
+
+.player-image {
+  border-radius: 1rem;
+  width: 4rem;
+  height: 4rem;
 }

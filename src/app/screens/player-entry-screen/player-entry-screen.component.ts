@@ -11,27 +11,34 @@ import { FormGroup, Validators, FormControl } from "@angular/forms";
   styleUrls: ["./player-entry-screen.component.css"],
 })
 export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
-  constructor(private playerEntryService: PlayerEntryService) {}
-  players: Player[] = new Array();
-  id: number = 1;
-  playerEntered: string;
-
-  private team1Sub: Subscription;
-  private team2Sub: Subscription;
   team1: Team;
   team2: Team;
   team1Form: FormGroup;
+  team2Form: FormGroup;
   team1PlayerNameForm: FormGroup;
-  playerID: FormControl;
-  playerNoExist = false;
+  team2PlayerNameForm: FormGroup;
+  playerTeam1NoExist = false;
+  playerTeam2NoExist = false;
+  private team1Sub: Subscription;
+  private team2Sub: Subscription;
+
+  constructor(private playerEntryService: PlayerEntryService) {}
 
   ngOnInit(): void {
     this.team1Form = new FormGroup({
-      playerID: new FormControl("", Validators.required),
+      playerID1: new FormControl("", Validators.required),
     });
 
     this.team1PlayerNameForm = new FormGroup({
-      toAdd: new FormControl(""),
+      toAdd1: new FormControl(""),
+    });
+
+    this.team2Form = new FormGroup({
+      playerID2: new FormControl("", Validators.required),
+    });
+
+    this.team2PlayerNameForm = new FormGroup({
+      toAdd2: new FormControl(""),
     });
 
     this.team1 = this.playerEntryService.getTeam1();
@@ -50,10 +57,14 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
     this.playerEntryService.fetchPlayerInfo(id, teamNum).then(
       (result) => {
         if (!result) {
-          console.log(result);
-          this.playerNoExist = true;
+          if (teamNum === 1) this.playerTeam1NoExist = true;
+          else if (teamNum === 2) this.playerTeam2NoExist = true;
+          else reportError("OOPS! Something went wrong.");
         } else {
+          this.playerTeam1NoExist = false;
+          this.playerTeam2NoExist = false;
           this.team1Form.reset();
+          this.team2Form.reset();
         }
       },
       (error) => {
@@ -72,28 +83,55 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
     });
   }
 
-  enterPlayer(id: number, teamNumber: number) {
-    let newPlayer = new Player(
-      id,
-      this.team1PlayerNameForm.controls.toAdd.value
-    );
-    this.team1.players[id] = newPlayer;
-    this.playerNoExist = false;
-    this.team1Form.reset();
-    console.log(this.team1);
+  enterPlayer(teamNumber: number) {
+    if (teamNumber === 1) {
+      //creates a new player with the value from the input for an ID
+      //and the value from the input for a new code name
+      this.playerEntryService.addPlayer(
+        new Player(
+          this.team1Form.value.playerID1,
+          this.team1PlayerNameForm.controls.toAdd1.value
+        ),
+        teamNumber
+      );
+      //playerTeam1NoExist is a boolean to make the input box appear
+      //and disapear
+      this.playerTeam1NoExist = false;
+      this.team1Form.reset();
+      this.team1PlayerNameForm.reset();
+    } else if (teamNumber === 2) {
+      this.playerEntryService.addPlayer(
+        new Player(
+          this.team2Form.value.playerID2,
+          this.team2PlayerNameForm.controls.toAdd2.value
+        ),
+        teamNumber
+      );
+      this.playerTeam2NoExist = false;
+      this.team2Form.reset();
+      this.team2PlayerNameForm.reset();
+    } else {
+      reportError(
+        "OOPS! Something went wrong adding this player. Line 110 of player-entry-screen.component.ts"
+      );
+    }
   }
 
-  removePlayer(id: number, teamNumber: number) {
-    console.log(id);
-    console.log(this.team1.players);
+  removePlayer(player: Player, teamNumber: number) {
     if (teamNumber === 1) {
-      this.team1.players[id] = null;
+      this.team1.players[this.team1.players.indexOf(player)] = null;
+    } else if (teamNumber === 2) {
+      this.team2.players[this.team2.players.indexOf(player)] = null;
+    } else {
+      reportError(
+        "OOPS! Something went wrong removing this player. Line 122 in player-entry-screen.component.ts"
+      );
     }
   }
 
   startGame() {
     let count = 0;
-    const result = this.players.filter((element): element is Player => {
+    const result = this.team1.players.filter((element): element is Player => {
       return element !== null;
     });
     console.log("start game works (create call here)");
