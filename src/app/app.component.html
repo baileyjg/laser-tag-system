@@ -1,4 +1,5 @@
 <splash-screen *ngIf="devMode === false"></splash-screen>
+<app-transition-screen *ngIf="showTransitionScreen"></app-transition-screen>
 <app-dev-mode-toolbar *ngIf="devMode" (changeStageEvent)="changeStage($event)"></app-dev-mode-toolbar>
 <app-player-entry-screen *ngIf="stage === 'player-entry'"></app-player-entry-screen>
 <app-game-action-screen *ngIf="stage === 'game-action'"></app-game-action-screen>

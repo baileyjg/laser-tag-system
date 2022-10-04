@@ -118,6 +118,7 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
     const result = this.team1.players.filter((element): element is Player => {
       return element !== null;
     });
+    this.playerEntryService.startGame();
     console.log("start game works (create call here)");
     console.log(result);
   }

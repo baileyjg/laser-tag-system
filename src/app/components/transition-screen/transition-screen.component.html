@@ -1,0 +1,19 @@
+<div
+  class="app-splash-screen"
+  [ngStyle]="{
+    left: windowWidth,
+    opacity: opacityChange,
+    transition: screenTransition
+  }"
+  *ngIf="showTransition"
+>
+  <div class="app-splash-inner">
+    <img src="../../assets/logo.jpg" class="app-logo" />
+    <div class="app-label">Starting Game...</div>
+    <div class="app-loader">
+      <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

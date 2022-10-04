@@ -32,6 +32,7 @@ export class PlayerEntryService {
   // Variables
   team1$ = new Subject<Team>();
   team2$ = new Subject<Team>();
+  showTransitionScreen$ = new Subject<boolean>();
 
   team1: Team = this.team1MockData;
   team2: Team = this.team2MockData;
@@ -74,6 +75,10 @@ export class PlayerEntryService {
         this.team2$.next(this.team2);
       }
     });
+  }
+
+  startGame () {
+    this.showTransitionScreen$.next(true);
   }
 
   fetchPlayerInfo(id: number, teamNum: number): Promise<boolean> {

@@ -7,6 +7,7 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
 import { PlayerEntryScreenComponent } from './screens/player-entry-screen/player-entry-screen.component';
 import { GameActionScreenComponent } from './screens/game-action-screen/game-action-screen.component';
 import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-toolbar.component';
+import { TransitionScreenComponent } from './components/transition-screen/transition-screen.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-
     SplashScreenComponent,
     PlayerEntryScreenComponent,
     GameActionScreenComponent,
-    DevModeToolbarComponent
+    DevModeToolbarComponent,
+    TransitionScreenComponent
   ],
   imports: [
     BrowserModule,
