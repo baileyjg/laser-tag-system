@@ -47,7 +47,7 @@ export class PlayerEntryService {
 
   addPlayer(player: Player, teamNum: number) {
     // Called when adding a new player into the DB
-    const pData = { codeName: player.getName() };
+    const pData = { id: player.getID(), codeName: player.getName() };
     this.http.post(`${this.backendURL}/player/`, pData).subscribe((x) => {
       console.log(x);
     });
@@ -77,7 +77,7 @@ export class PlayerEntryService {
     });
   }
 
-  startGame () {
+  startGame() {
     this.showTransitionScreen$.next(true);
   }
 
