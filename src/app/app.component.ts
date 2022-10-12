@@ -10,7 +10,7 @@ export class AppComponent {
   title: string = "laser-tag-system";
   stage: string = "player-entry";
   showTransitionScreen: boolean = false;
-  devMode: boolean = false;
+  devMode: boolean = true;
 
   constructor(private readonly playerEntryService: PlayerEntryService) {
     this.playerEntryService.showTransitionScreen$.subscribe((show: boolean) => {
@@ -21,11 +21,10 @@ export class AppComponent {
   }
 
   showTransition() {
-    console.log("Showing Transition screen");
     this.showTransitionScreen = true;
     setTimeout(() => {
       this.stage = 'game-action';
-    }, 2000);
+    }, 4000);
   }
 
   changeStage(stage: string) {

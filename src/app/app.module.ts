@@ -8,6 +8,7 @@ import { PlayerEntryScreenComponent } from './screens/player-entry-screen/player
 import { GameActionScreenComponent } from './screens/game-action-screen/game-action-screen.component';
 import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-toolbar.component';
 import { TransitionScreenComponent } from './components/transition-screen/transition-screen.component';
+import { PlayerEntryService } from './services/player-entry.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { TransitionScreenComponent } from './components/transition-screen/transi
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PlayerEntryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
