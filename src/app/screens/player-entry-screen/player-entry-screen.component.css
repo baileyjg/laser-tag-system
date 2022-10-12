@@ -2,9 +2,10 @@
   background-color: black;
   width: 100%;
 }
+
 .col-container {
   border: solid black;
-  height: 100vh;
+  height: 96vh;
   width: 100%;
   text-align: center;
   overflow-y: auto;
@@ -16,14 +17,14 @@
 }
 
 .team1-container {
-  margin-right: 2rem;
-  margin-left: 10rem;
+  margin-right: 1%;
+  margin-left: 10%;
   background-color: lightseagreen;
 }
 
 .team2-container {
-  margin-left: 2rem;
-  margin-right: 10rem;
+  margin-left: 1%;
+  margin-right: 10%;
   background-color: lightcoral;
 }
 

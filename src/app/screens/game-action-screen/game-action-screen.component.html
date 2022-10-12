@@ -2,28 +2,41 @@
   <div class="container">
     <div class="row">
       <div class="col team1">
-        <p class="header">Team 1</p>
+        <p class="header">{{ team1.name }}</p>
+        <div *ngFor="let player of team1.players">
+          {{ player.getName() }}
+        </div>
       </div>
       <div class="col">
         <p class="header">Game Information</p>
         <p class="timer">Time Remaining:</p>
-        <p class="timertime">{{minutes}}<span class="timertimecolon">:</span>{{seconds}}</p> <!-- Placeholder -->
+        <p class="timertime">{{ minutes }}<span class="timertimecolon">:</span>{{ seconds }}</p>
+        <!-- Placeholder -->
         <div class="progress">
-          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100"
-               class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-               style= "width:{{timerprogress}}%">
-          </div>
+          <div
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="100"
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            [ngStyle]="{'width': timer/timerDenominator + '%'}"
+          ></div>
         </div>
         <p></p>
-        <p class="score"> <!-- Placeholder -->
-          <span class="t1score">{{t1score}}</span><span class="score"> Score </span><span class="t2score">{{t2score}}</span>
+        <p class="score">
+          <!-- Placeholder -->
+          <span class="t1score">{{ team1.score }}</span
+          ><span class="score"> Score </span><span class="t2score">{{ team2.score }}</span>
         </p>
-        <p class="killfeedheader">Killfeed</p> <!-- Placeholder -->
-        <div class="killfeed">
-        </div>
+        <p class="killfeedheader">Killfeed</p>
+        <!-- Placeholder -->
+        <div class="killfeed"></div>
       </div>
       <div class="col team2">
-        <p class="header">Team 2</p>
+        <p class="header">{{ team2.name }}</p>
+        <div *ngFor="let player of team2.players">
+          {{ player.getName() }}
+        </div>
       </div>
     </div>
   </div>
