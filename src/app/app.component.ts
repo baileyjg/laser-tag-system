@@ -10,7 +10,7 @@ export class AppComponent {
   title: string = "laser-tag-system";
   stage: string = "player-entry";
   showTransitionScreen: boolean = false;
-  devMode: boolean = true;
+  devMode: boolean = false;
 
   constructor(private readonly playerEntryService: PlayerEntryService) {
     this.playerEntryService.showTransitionScreen$.subscribe((show: boolean) => {
