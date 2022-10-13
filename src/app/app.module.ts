@@ -9,6 +9,8 @@ import { GameActionScreenComponent } from './screens/game-action-screen/game-act
 import { DevModeToolbarComponent } from './components/dev-mode-toolbar/dev-mode-toolbar.component';
 import { TransitionScreenComponent } from './components/transition-screen/transition-screen.component';
 import { PlayerEntryService } from './services/player-entry.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,13 @@ import { PlayerEntryService } from './services/player-entry.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [PlayerEntryService],
   bootstrap: [AppComponent]
