@@ -1,8 +1,8 @@
 {
   "name": "Photon",
   "short_name": "Photon",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "black",
+  "background_color": "black",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
