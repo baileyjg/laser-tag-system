@@ -1,8 +1,8 @@
 {
-  "name": "laser-tag-system",
-  "short_name": "laser-tag-system",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Photon",
+  "short_name": "Photon",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
