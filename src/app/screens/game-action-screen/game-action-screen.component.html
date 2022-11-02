@@ -4,7 +4,13 @@
       <div class="col team1">
         <p class="header">{{ team1.name }}</p>
         <div *ngFor="let player of team1.players">
-          {{ player.getName() }}
+          <div class="card player-card d-flex" *ngIf="player !== null">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <img src="{{ player.profilePicSrc }}" class="player-image" />
+              {{ player.name }}
+              <div>Score: {{player.killCount}}</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col">
@@ -35,7 +41,13 @@
       <div class="col team2">
         <p class="header">{{ team2.name }}</p>
         <div *ngFor="let player of team2.players">
-          {{ player.getName() }}
+          <div class="card player-card d-flex" *ngIf="player !== null">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <img src="{{ player.profilePicSrc }}" class="player-image" />
+              {{ player.name }}
+              <div>Score: {{player.killCount}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
