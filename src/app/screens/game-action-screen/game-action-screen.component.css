@@ -79,3 +79,17 @@
     color: white;
     height: 50vh;
 }
+
+.player-card {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    background-color: black;
+    color: white;
+  }
+
+  .player-image {
+    border-radius: 1rem;
+    width: 4rem;
+    height: 4rem;
+  }
