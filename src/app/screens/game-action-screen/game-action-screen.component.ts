@@ -9,8 +9,9 @@ import Team from "src/app/Team";
   styleUrls: ["./game-action-screen.component.css"],
 })
 export class GameActionScreenComponent implements OnInit, OnDestroy {
-  minutes: number = 5;
-  seconds: string = "00";
+  minutes: number;
+  seconds: string;
+  secondsNum: number;
   team1: Team; // Stores data for team 1
   team2: Team; // Stores data for team 2
   killfeed: String[]; // An array of killfeed messages
@@ -38,6 +39,18 @@ export class GameActionScreenComponent implements OnInit, OnDestroy {
       } else {
         this.timerDenominator = this.gameDuration/100;
       }
+
+      this.secondsNum = this.timer % 60;
+      this.seconds = this.secondsNum.toString();
+      this.minutes = Math.floor(this.timer / 60);
+      if(this.secondsNum < 10){
+        this.seconds = "0" + this.seconds;
+      }
+      if(this.secondsNum <= 0){
+        this.seconds = "00";
+        this.minutes = 0;
+      }
+
     });
 
     this.killfeedSub = gameActionService.killfeed$.subscribe(() => {
@@ -53,6 +66,7 @@ export class GameActionScreenComponent implements OnInit, OnDestroy {
     this.timer = this.gameActionService.getTime();
     this.cooldownDuration = this.gameActionService.getCooldownDuration();
     this.gameDuration = this.gameActionService.getGameDuration();
+
   }
 
   ngOnDestroy(): void {
