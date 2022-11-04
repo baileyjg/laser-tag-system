@@ -1,4 +1,4 @@
-.background{
+.background {
     background-color: black;
     width: 100%;
     height: 100vh;
@@ -14,19 +14,19 @@
     font-weight: bolder;
     background: whitesmoke;
 }
-.header{
+.header {
     text-align: center;
 }
-.timer{
+.timer {
     text-align: center;
     font-size: larger;
 }
-.timertime{
+.timertime {
     text-align: center;
     font-size: x-large;
 }
 
-.timertimecolon{
+.timertimecolon {
     text-align: center;
     font-size: x-large;
     animation: blinker 1.5s linear infinite;
@@ -38,15 +38,15 @@
     }
 }
 
-.team1{
+.team1 {
     background: lightseagreen;
 }
 
-.team2{
+.team2 {
     background: lightcoral;
 }
 
-.t1score{
+.t1score {
     background: lightseagreen;
     border-radius: 20px;
     text-align: center;
@@ -54,10 +54,10 @@
     font-size: 50px;
     margin-left: .5rem;
     margin-right: 1rem;
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
-.t2score{
+.t2score {
     background: lightcoral;
     border-radius: 20px;
     text-align: center;
@@ -65,16 +65,16 @@
     font-size: 50px;
     margin-left: 1rem;
     margin-right: .5rem;
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
-.scoreheader{
+.scoreheader {
     text-align: center;
     font-weight: bold;
     font-size: larger;
 }
 
-.score{
+.score {
     text-align: center;
     font-weight: bold;
     font-size: larger;
@@ -92,10 +92,10 @@
     font-size: larger;
 }
 
-.killfeed{
+.killfeed {
     background: black;
     color: white;
-    height: 47vh;
+    height: 62vh;
     border-radius: 20px;
 }
 
@@ -107,8 +107,18 @@
     color: white;
   }
 
-  .player-image {
+.player-image {
     border-radius: 1rem;
     width: 4rem;
     height: 4rem;
   }
+
+.blink_me {
+    animation: blinker 3s linear infinite;
+}
+  
+@keyframes blinker {
+    50% {
+        opacity: .6;
+    }
+}
