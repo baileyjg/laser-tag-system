@@ -22,7 +22,7 @@ export class GameActionService {
   team2MockData = {
     name: "Rappers",
     color: "red",
-    score: 420,
+    score: 1420,
     players: [
       new Player(5, "Biz Bone"),
       new Player(6, "Queen C"),
