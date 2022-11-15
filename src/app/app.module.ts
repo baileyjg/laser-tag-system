@@ -11,6 +11,7 @@ import { TransitionScreenComponent } from './components/transition-screen/transi
 import { PlayerEntryService } from './services/player-entry.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { EndGameScreenComponent } from './screens/end-game-screen/end-game-screen.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { environment } from '../environments/environment';
     PlayerEntryScreenComponent,
     GameActionScreenComponent,
     DevModeToolbarComponent,
-    TransitionScreenComponent
+    TransitionScreenComponent,
+    EndGameScreenComponent
   ],
   imports: [
     BrowserModule,
