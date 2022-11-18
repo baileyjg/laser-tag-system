@@ -19,4 +19,8 @@ export class DevModeToolbarComponent implements OnInit {
   setStageGameAction = () => {
     this.changeStageEvent.emit("game-action");
   };
+
+  setStageEndGame = () => {
+    this.changeStageEvent.emit("end-game");
+  }
 }

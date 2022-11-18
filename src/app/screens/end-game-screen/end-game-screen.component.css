@@ -38,22 +38,22 @@
   color: black;
   position: absolute;
   height: 200px;
-  width: 150px;
+  width: 250px;
 }
 
 .first_place {
   top: -80px;
-  left: 280px;
+  left: 230px;
 }
 
 .second_place {
   top: -10px;
-  left: 60px;
+  left: 0px;
 }
 
 .third_place {
   top: 30px;
-  right: 40px;
+  right: 0px;
 }
 
 .player_img {

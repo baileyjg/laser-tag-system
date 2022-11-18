@@ -1,20 +1,20 @@
 <div class="background">
     <div class="header_container">
-        <h2 class="blink_me">Winner: {{team2MockData.name}}</h2>
+        <h2 class="blink_me">Winner: {{winningTeam ? winningTeam.name : "Nobody"}}</h2>
     </div>
     <div class="container">
         <img class="podium" src="../../../assets/podium.png" />
-        <div class="player_card first_place">
-            <h3 style="background-color: #f7dd4c; border-radius: 20px;">Bruh</h3>
-            <img class="player_img" src="https://robohash.org/Bruh">
+        <div *ngIf="players[0]" class="player_card first_place">
+            <h3 style="background-color: #f7dd4c; border-radius: 20px;">{{players[0].getName()}}</h3>
+            <img class="player_img" src={{players[0].getProfilePicUrl()}}>
         </div>
-        <div class="player_card second_place">
-            <h3 style="background-color: #cac5b9; border-radius: 20px;">Trash Can</h3>
-            <img class="player_img" src="https://robohash.org/TrashCan">
+        <div *ngIf="players[1]" class="player_card second_place">
+            <h3 style="background-color: #cac5b9; border-radius: 20px;">{{players[1].getName()}}</h3>
+            <img class="player_img" src={{players[1].getProfilePicUrl()}}>
         </div>
-        <div class="player_card third_place">
-            <h3 style="background-color: #7f4c10; border-radius: 20px;">Steve</h3>
-            <img class="player_img" src="https://robohash.org/Steve">
+        <div *ngIf="players[2]" class="player_card third_place">
+            <h3 style="background-color: #7f4c10; border-radius: 20px;">{{players[2].getName()}}</h3>
+            <img class="player_img" src={{players[2].getProfilePicUrl()}}>
         </div>
         <button class="btn btn-success" (click)="resetGame()">Start New Game</button>
     </div>

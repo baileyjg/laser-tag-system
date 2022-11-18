@@ -21,7 +21,39 @@ export class EndGameScreenComponent implements OnInit {
     ],
   };
 
-  constructor( private readonly gameActionService: GameActionService) {}
+  winningTeam: Team;
+  players: Player[];
+
+  constructor( private readonly gameActionService: GameActionService) {
+    if (this.gameActionService.team1.score > this.gameActionService.team2.score) {
+      this.winningTeam = this.gameActionService.team1;
+    } else if (this.gameActionService.team1.score < this.gameActionService.team2.score) {
+      this.winningTeam = this.gameActionService.team2;
+    } else {
+      this.winningTeam = null;
+    }
+
+    // Find top three players
+    if (this.winningTeam) {
+
+      this.players = this.winningTeam.players;
+
+      function compare(a, b) {
+        if (a.score < b.score) {
+          return -1;
+        }
+
+        if (a.score > b.score){
+          return 1;
+        }
+
+        return 0;
+      }
+    
+      this.players.sort(compare);
+    }
+
+  }
 
   ngOnInit(): void {}
 
