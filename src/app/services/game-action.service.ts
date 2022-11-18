@@ -40,6 +40,7 @@ export class GameActionService {
   team2$ = new Subject<Team>();
   killfeed$ = new Subject<String[]>();
   showTransitionScreen$ = new Subject<boolean>();
+  resetGame$ = new Subject<void>();
 
   // Variables
   team1: Team;
