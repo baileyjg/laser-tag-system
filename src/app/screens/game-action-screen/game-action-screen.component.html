@@ -37,10 +37,11 @@
         <p class="scoreheader"><span class="scoreheader"> Score </span></p>
         <p class="score">
           <span [ngClass]="{ blink_me: team1.score > team2.score }" class="t1score">{{ team1.score }}</span>
-          <!-- <span class="scorecolon"><a></a></span> -->
           <span [ngClass]="{ blink_me: team2.score > team1.score }" class="t2score">{{ team2.score }}</span>
         </p>
-        <div class="killfeed"></div>
+        <div class=" col killfeed ">
+          <div class="kill" *ngFor="let kill of killfeed.reverse()">{{ kill }}</div>
+        </div>
       </div>
       <div class="col team2">
         <p class="header">{{ team2.name }}</p>

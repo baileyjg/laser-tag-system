@@ -46,7 +46,7 @@ export class GameActionService {
   // Variables
   team1: Team;
   team2: Team;
-  killfeed = ["Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G"]
+  killfeed = ["Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy"];
 
   timerStage = "cooldown";
   cooldownTime = 30; // Sets the cooldown time
