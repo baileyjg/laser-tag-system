@@ -22,3 +22,6 @@ Enabled by setting the devMode boolean to 'true' in app.component.ts. This mode 
 
 ### Angular CLI Info
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+This is a submodule of
+https://github.com/hprater/laser-tag-backend
