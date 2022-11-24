@@ -12,7 +12,8 @@ export class PlayerEntryService {
 
   // Set the backend URL
   // backendURL = "http://localhost:8080";
-  backendURL = "https://laserbacks-backend.herokuapp.com";
+  //backendURL = "https://laserbacks-backend.herokuapp.com";
+  backendURL = "/api";
 
   // Mock Data - will be deleted when backend is hooked up
   team1MockData: Team = {

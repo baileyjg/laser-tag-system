@@ -33,7 +33,8 @@ export class GameActionService {
 
   // Set the backend URL
   // backendURL = "http://localhost:8080";
-  backendURL = "https://laserbacks-backend.herokuapp.com";
+  //backendURL = "https://laserbacks-backend.herokuapp.com";
+  backendURL = "/api";
 
   // Observables
   team1$ = new Subject<Team>();
