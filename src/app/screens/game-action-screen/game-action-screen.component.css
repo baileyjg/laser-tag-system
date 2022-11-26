@@ -9,6 +9,7 @@
     border-radius: 20px;
     height: 96vh;
     overflow: auto;
+    overflow-x: hidden;
     margin-right: 2rem;
     margin-top: 1rem;
     font-weight: bolder;
@@ -92,11 +93,23 @@
     font-size: larger;
 }
 
+.killfeed::-webkit-scrollbar{
+    display: none;
+}
+
+
 .killfeed {
     background: black;
+    -ms-overflow-style: none;
     color: white;
-    height: 62vh;
+    height: 63vh;
+    width: 50vh;
     border-radius: 20px;
+    text-align: center;
+}
+
+kill {
+    text-align: center;
 }
 
 .player-card {
