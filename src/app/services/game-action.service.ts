@@ -46,11 +46,11 @@ export class GameActionService {
   // Variables
   team1: Team;
   team2: Team;
-  killfeed = ["Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy"];
+  killfeed = ["Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba"];
 
   timerStage = "cooldown";
   cooldownTime = 30; // Sets the cooldown time
-  gameTime = 300; // Sets the game timer
+  gameTime = 360; // Sets the game timer
 
   gameTimer = this.cooldownTime;
   timer$ = interval(1000);
