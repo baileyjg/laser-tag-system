@@ -15,12 +15,12 @@ export default class Player {
   }
 
   // Setters
-  public increaseDeathCount(): void {
-    this.deathCount += 1;
+  public updateDeathCount(n: number): void {
+    this.deathCount = n;
   }
 
-  public increaseKillCount(): void {
-    this.killCount += 1;
+  public updateKillCount(n: number): void {
+    this.killCount = n;
   }
 
   // Getters

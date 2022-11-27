@@ -24,14 +24,17 @@ export class GameActionScreenComponent implements OnInit, OnDestroy {
   // Subscriptions
   killfeedSub: Subscription;
   timerSub: Subscription;
+  team1Sub: Subscription;
+  team2Sub: Subscription;
 
   constructor(private gameActionService: GameActionService) {
+    this.team2Sub = gameActionService.team2$.subscribe(data => this.team2 = data);
+    this.team1Sub = gameActionService.team1$.subscribe(data => this.team1 = data);
+    this.killfeedSub = gameActionService.killfeed$.subscribe(data => this.killfeed = data);
     this.timerSub = gameActionService.timer$.subscribe(() => {
       // Called when the timer changes
       this.timer = gameActionService.getTime();
       this.timerStage = gameActionService.getTimerStage();
-      this.team1 = gameActionService.getTeam1();
-      this.team2 = gameActionService.getTeam2();
       this.killfeed = gameActionService.getKillFeed();
 
       if (this.timerStage === 'cooldown') {
@@ -52,11 +55,6 @@ export class GameActionScreenComponent implements OnInit, OnDestroy {
       }
 
     });
-
-    this.killfeedSub = gameActionService.killfeed$.subscribe(() => {
-      // Called when killfeed changes
-      this.killfeed = gameActionService.getKillFeed();
-    });
   }
 
   ngOnInit(): void {
@@ -72,6 +70,8 @@ export class GameActionScreenComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
       this.killfeedSub.unsubscribe();
       this.timerSub.unsubscribe();
+      this.team1Sub.unsubscribe();
+      this.team2Sub.unsubscribe();
       this.gameActionService.timerSub.unsubscribe();
   }
 }

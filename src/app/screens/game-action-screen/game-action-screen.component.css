@@ -103,12 +103,13 @@
     -ms-overflow-style: none;
     color: white;
     height: 63vh;
-    width: 50vh;
+    width: 100%;
+    margin-bottom: 25px;
     border-radius: 20px;
     text-align: center;
 }
 
-kill {
+.kill {
     text-align: center;
 }
 
@@ -118,7 +119,7 @@ kill {
     margin-left: 0.5rem;
     background-color: black;
     color: white;
-  }
+}
 
 .player-image {
     border-radius: 1rem;

@@ -119,7 +119,5 @@ export class PlayerEntryScreenComponent implements OnInit, OnDestroy {
       return element !== null;
     });
     this.playerEntryService.startGame();
-    console.log("start game works (create call here)");
-    console.log(result);
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
+import { AppService } from "./services/app.service";
 import { PlayerEntryService } from "./services/player-entry.service";
-import { GameActionService } from "./services/game-action.service";
 
 @Component({
   selector: "app-root",
@@ -13,19 +13,14 @@ export class AppComponent {
   showTransitionScreen: boolean = false;
   devMode: boolean = false;
 
-  constructor(
-    private readonly playerEntryService: PlayerEntryService,
-    private readonly gameActionService: GameActionService
-    ) {
+  constructor(private readonly playerEntryService: PlayerEntryService, private readonly appService: AppService) {
     this.playerEntryService.showTransitionScreen$.subscribe((show: boolean) => {
       if (show) {
         this.showTransition();
       }
     });
 
-    this.gameActionService.resetGame$.subscribe(() => {
-      this.gameReset();
-    });
+    this.appService.gameStage$.subscribe(s => this.stage = s);
   }
 
   showTransition() {
@@ -33,14 +28,6 @@ export class AppComponent {
     setTimeout(() => {
       this.stage = 'game-action';
     }, 4000);
-  }
-
-  gameReset() {
-    this.stage = 'player-entry';
-  }
-
-  changeStage(stage: string) {
-    this.stage = stage;
   }
 
 }

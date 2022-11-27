@@ -65,7 +65,7 @@
       </div>
     </div>
     <div class="d-flex align-items-center">
-      <button class="btn btn-primary" type="button" (click)="startGame()">Start Game</button>
+      <button [ngClass]="{'disabled' : team1.players.length < 1 || team1.players.length > 15|| team2.players.length < 1 || team2.players.length > 15}" class="btn btn-primary" type="button" (click)="startGame()">Start Game</button>
     </div>
     <div class="col-container team2-container">
       {{ team2.name }}

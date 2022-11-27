@@ -11,9 +11,8 @@ export class PlayerEntryService {
   constructor(private http: HttpClient) {}
 
   // Set the backend URL
-  // backendURL = "http://localhost:8080";
-  //backendURL = "https://laserbacks-backend.herokuapp.com";
-  backendURL = "/api";
+  backendURL = "http://localhost:8080/api";
+  //backendURL = "https://laserbacks-backend.herokuapp.com/api";
 
   // Mock Data - will be deleted when backend is hooked up
   team1MockData: Team = {
@@ -38,6 +37,8 @@ export class PlayerEntryService {
   team1: Team = this.team1MockData;
   team2: Team = this.team2MockData;
 
+  gameID: number;
+
   getTeam1(): Team {
     return this.team1;
   }
@@ -49,9 +50,7 @@ export class PlayerEntryService {
   addPlayer(player: Player, teamNum: number) {
     // Called when adding a new player into the DB
     const pData = { id: player.getID(), codeName: player.getName() };
-    this.http.post(`${this.backendURL}/player/`, pData).subscribe((x) => {
-      console.log(x);
-    });
+    this.http.post(`${this.backendURL}/player/`, pData).subscribe();
     if (teamNum === 1) {
       this.team1.players.push(player);
       this.team1$.next(this.team1);
@@ -78,8 +77,42 @@ export class PlayerEntryService {
     });
   }
 
-  startGame() {
+  startGame(): void {
+    this.createNewGameBE();
     this.showTransitionScreen$.next(true);
+  }
+
+  changeGameState(s: string): void {
+    
+  }
+
+  createNewGameBE(): Promise<void> {
+
+    const teamData = {
+      team1: this.team1.players.map((p) => p.getID()),
+      team2: this.team2.players.map((p) => p.getID()),
+    };
+
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.backendURL}/game/`, teamData).subscribe(returnedData => {
+        try {
+          this.gameID = (returnedData as any).id;
+          console.log("New game created with ID: " + this.gameID);
+          resolve();
+        } catch {
+          console.log("ERROR: A problem occurred when creating a new game");
+          reject();
+        }
+      });
+    });
+  }
+
+  reset(): void {
+    this.team1.players = [];
+    this.team2.players = [];
+    this.team1.score = 0;
+    this.team2.score = 0;
+    this.gameID = null;
   }
 
   fetchPlayerInfo(id: number, teamNum: number): Promise<boolean> {
