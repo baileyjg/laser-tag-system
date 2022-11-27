@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit, Output } from "@angular/core";
+import { AppService } from "src/app/services/app.service";
 
 @Component({
   selector: "app-dev-mode-toolbar",
@@ -6,21 +7,20 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
   styleUrls: ["./dev-mode-toolbar.component.css"],
 })
 export class DevModeToolbarComponent implements OnInit {
-  @Output() changeStageEvent = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private appService: AppService) {}
 
   ngOnInit(): void {}
 
   setStagePlayerEntry = () => {
-    this.changeStageEvent.emit("player-entry");
+    this.appService.setStage('player-entry');
   };
 
   setStageGameAction = () => {
-    this.changeStageEvent.emit("game-action");
+    this.appService.setStage('game-action');
   };
 
   setStageEndGame = () => {
-    this.changeStageEvent.emit("end-game");
+    this.appService.setStage('end-game');
   }
 }

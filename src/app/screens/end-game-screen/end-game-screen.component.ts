@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import Player from "src/app/Player";
 import Team from "src/app/Team";
 import { GameActionService } from "src/app/services/game-action.service";
+import { AppService } from "src/app/services/app.service";
+import { PlayerEntryService } from "src/app/services/player-entry.service";
 
 @Component({
   selector: "app-end-game-screen",
@@ -24,7 +26,12 @@ export class EndGameScreenComponent implements OnInit {
   winningTeam: Team;
   players: Player[];
 
-  constructor( private readonly gameActionService: GameActionService) {
+  constructor(
+    private gameActionService: GameActionService,
+    private appService: AppService,
+    private playerEntryService: PlayerEntryService) {
+
+    // Determine winning team
     if (this.gameActionService.team1.score > this.gameActionService.team2.score) {
       this.winningTeam = this.gameActionService.team1;
     } else if (this.gameActionService.team1.score < this.gameActionService.team2.score) {
@@ -39,12 +46,12 @@ export class EndGameScreenComponent implements OnInit {
       this.players = this.winningTeam.players;
 
       function compare(a, b) {
-        if (a.score < b.score) {
-          return -1;
+        if (a.getKillCount() < b.getKillCount()) {
+          return 1;
         }
 
-        if (a.score > b.score){
-          return 1;
+        if (a.getKillCount() > b.getKillCount()){
+          return -1;
         }
 
         return 0;
@@ -58,6 +65,7 @@ export class EndGameScreenComponent implements OnInit {
   ngOnInit(): void {}
 
   resetGame() {
-    this.gameActionService.resetGame$.next();
+    this.playerEntryService.reset();
+    this.appService.setStage('player-entry');
   }
 }

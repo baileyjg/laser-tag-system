@@ -107,6 +107,14 @@ export class PlayerEntryService {
     });
   }
 
+  reset(): void {
+    this.team1.players = [];
+    this.team2.players = [];
+    this.team1.score = 0;
+    this.team2.score = 0;
+    this.gameID = null;
+  }
+
   fetchPlayerInfo(id: number, teamNum: number): Promise<boolean> {
     // If player is already on a team -> do nothing -> return true
     // Else, query the player ID from DB (using mock data for now)

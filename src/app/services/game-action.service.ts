@@ -52,8 +52,8 @@ export class GameActionService {
   killfeed = ["Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba", "Vanilla Papa shot Billy", "Wilbur shot Biz Bone", "Peggy shot Queen C", "Bubba shot Vanilla Papa", "Billy shot Gangsta G", "Bubba shot Biz Bone", "Queen C shot Bubba"];
 
   timerStage = "cooldown";
-  cooldownTime = 10; // Sets the cooldown time
-  gameTime = 30; // Sets the game timer
+  cooldownTime = 30; // Sets the cooldown time
+  gameTime = 360; // Sets the game timer
 
   gameTimer = this.cooldownTime;
   timer$ = interval(1000);
@@ -66,6 +66,7 @@ export class GameActionService {
     if (this.gameTimer <= 0 && this.timerStage == "game") {
       // Game is over
       this.stopTimer();
+      this.endGameBE();
       this.endGame();
     } else if (this.gameTimer <= 0 && this.timerStage == "cooldown") {
       // Cooldown is over
@@ -107,6 +108,17 @@ export class GameActionService {
           reject();
         }
       });
+    });
+  }
+
+  endGameBE(): void {
+    this.http.delete(`${this.backendURL}/game/${this.playerEntryService.gameID}`).subscribe({
+      next: () => {
+        console.log("DELETE request successful");
+      },
+      error: () => {
+        console.log("There was an error with the DELETE request");
+      }
     });
   }
 
@@ -155,6 +167,8 @@ export class GameActionService {
 
   endGame(): void {
     this.appService.setStage('end-game');
+    this.gameTimer = this.cooldownTime;
+    this.timerStage = "cooldown";
   }
 
   // Getters
