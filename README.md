@@ -14,6 +14,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Useful information for developers
 
+1. The Backend Now runs the full Project
+2. If you try and run it only on FE it will work, but will not access BE
+3. There is a .jar file now that we use to run the Project check our discord
+
 ### Dev Mode:
 
 Enabled by setting the devMode boolean to 'true' in app.component.ts. This mode does the following:
