@@ -40,7 +40,9 @@
           <span [ngClass]="{ blink_me: team2.score > team1.score }" class="t2score">{{ team2.score }}</span>
         </p>
         <div class="col killfeed">
-          <div class="kill" *ngFor="let kill of killfeed.reverse()">{{ kill }}</div>
+          <div *ngIf="killfeed">
+            <div class="kill" *ngFor="let kill of killfeed.reverse()">{{ kill }}</div>
+          </div>
         </div>
       </div>
       <div class="col team2">
